@@ -3,7 +3,7 @@ from tqdm import tqdm
 
 queue = 200
 j = 0
-N = 1000000
+N = 10000000
 for k in tqdm(range(N)):
     num_50 = 0
     num_100 = 0
