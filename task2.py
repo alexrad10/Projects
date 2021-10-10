@@ -1,12 +1,10 @@
 from random import randrange
-from tqdm import tqdm
 
 queue = 200
 j = 0
 N = 10000000
-for k in tqdm(range(N)):
-    num_50 = 0
-    num_100 = 0
+for k in range(N):
+    num_50 = 0  # amount of people with 50 rubles
     change = 0
     flag = True
     for i in range(queue):
@@ -19,15 +17,9 @@ for k in tqdm(range(N)):
             break
         else:
             change -= 50
-            num_100 += 1
-        if num_100 == 100:
+        if num_50 == 100:
             flag = True
             break
-        if num_50 == 100:
-            if change % (queue - (i + 1)) == 0:
-                flag = True
-            else:
-                flag = False
     if flag:
         j += 1
 print(j / N)
