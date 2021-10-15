@@ -1,24 +1,20 @@
-from random import randrange
+from random import shuffle
 
 queue = 200
 j = 0
-N = 10000000
+N = 1000000
+mass = [50] * 100 + [100] * 100
 for k in range(N):
-    num_50 = 0  # amount of people with 50 rubles
-    change = 0
+    people = 0  # number of people
     flag = True
-    for i in range(queue):
-        person = randrange(2)  # 0 - 50 rubles, 1 - 100 rubles
-        if person == 0:
-            change += 50
-            num_50 += 1
-        elif change == 0:
-            flag = False
-            break
+    shuffle(mass)
+    for elem in mass:
+        if elem == 50:
+            people += 1
         else:
-            change -= 50
-        if num_50 == 100:
-            flag = True
+            people -= 1
+        if people < 0:
+            flag = False
             break
     if flag:
         j += 1
